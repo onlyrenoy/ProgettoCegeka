@@ -1,22 +1,28 @@
-package com.azienda.entities;
+package com.example.demo.entities;
 
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Cascade;
 
+@Entity
 public class Offerta {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_offerta")
 	private int idOfferta;
 	
 	private String ruolo;
 	
-	@ManyToMany(mappedBy="offerte")
-	private List<Competenze> competenze;
 	
 	private String statoOfferta;
 	
@@ -24,6 +30,9 @@ public class Offerta {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "offerta")
 	List<Colloquio> colloqui;
+	
+	@ManyToMany(mappedBy="offerte")
+	private List<Competenze> competenze;
 	
 	public Offerta() {
 		
