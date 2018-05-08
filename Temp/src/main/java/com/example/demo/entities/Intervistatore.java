@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Intervistatore {
 	@Id
@@ -21,7 +23,9 @@ public class Intervistatore {
 	private String cognome;
 	
 	private String dipartimento;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="intervistatore")
+	@JsonIgnore
 	private List<Colloquio> colloqui;
 	
 	private String posizioneNelDipartimento;

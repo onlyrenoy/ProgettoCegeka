@@ -39,19 +39,13 @@ public class Colloquio {
 		
 	}
 	
-	
-
 	public int getIdColloquio() {
 		return idColloquio;
 	}
 
-
-
 	public void setIdColloquio(int idColloquio) {
 		this.idColloquio = idColloquio;
 	}
-
-
 
 	public Date getDataOra() {
 		return dataOra;
@@ -108,9 +102,13 @@ public class Colloquio {
 	public void setOfferta(Offerta offerta) {
 		this.offerta = offerta;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Colloquio [idColloquio=" + idColloquio + ", dataOra=" + dataOra + ", feedback=" + feedback
+				+ ", dipartimento=" + dipartimento + ", statoColloquio=" + statoColloquio + ", intervistatore="
+				+ intervistatore + ", candidato=" + candidato + ", offerta=" + offerta + "]";
+	}
 	
 
 }
