@@ -12,6 +12,8 @@ import javax.persistence.Id;
 
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Candidato {
 	@Id
@@ -27,9 +29,11 @@ public class Candidato {
 	
 	private int eta;
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="candidati")
+    @JsonIgnore
 	private List<CanditatoCompetenze> candidatoCompetenze = new ArrayList<CanditatoCompetenze>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "candidato")
+	@JsonIgnore
 	List<Colloquio> colloqui= new ArrayList<Colloquio>();
 	
 	public Candidato() {
@@ -74,6 +78,14 @@ public class Candidato {
 
 	public void setColloqui(List<Colloquio> colloqui) {
 		this.colloqui = colloqui;
+	}
+
+	public List<CanditatoCompetenze> getCandidatoCompetenze() {
+		return candidatoCompetenze;
+	}
+
+	public void setCandidatoCompetenze(List<CanditatoCompetenze> candidatoCompetenze) {
+		this.candidatoCompetenze = candidatoCompetenze;
 	}
 
 }

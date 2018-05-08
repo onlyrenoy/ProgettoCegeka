@@ -1,4 +1,6 @@
-package com.example.demo;
+package com.example.demo.controllers;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.entities.Candidato;
-import com.example.demo.interfaces.CandidatoService;
+import com.example.demo.services.CandidatoService;
 
 @Controller
 @RequestMapping(path="/go")
@@ -22,19 +24,7 @@ public class MyController {
 		return "hello";
 	}
 	
-	@GetMapping(path="/salva")
-	public @ResponseBody String salva()
-	{
-		Candidato c = new Candidato();
-		c.setCognome("biba");
-		c.setEta(23);
-		c.setNome("eddi");
-		
-		candService.save(c);	
-		
-		return "dati salvati";
-	}
-	
+
 	
 
 }
