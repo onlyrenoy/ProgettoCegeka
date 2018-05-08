@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,17 +19,18 @@ public class Candidato {
 	@Column(name="id_candidato")
 	private int idCandidato;
 	
-	@OneToMany (cascade = CascadeType.ALL, mappedBy="candidati")
-	private List<CanditatoCompetenze> candidatoCompetenze;
+	
 
 	private String nome;
 	
 	private String cognome;
 	
 	private int eta;
-		
+	@OneToMany (cascade = CascadeType.ALL, mappedBy="candidati")
+	private List<CanditatoCompetenze> candidatoCompetenze = new ArrayList<CanditatoCompetenze>();
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "candidato")
-	List<Colloquio> colloqui;
+	List<Colloquio> colloqui= new ArrayList<Colloquio>();
 	
 	public Candidato() {
 		
