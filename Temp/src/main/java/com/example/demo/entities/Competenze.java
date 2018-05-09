@@ -25,7 +25,7 @@ public class Competenze {
 	private String nome;
 	
 	@OneToMany (cascade = CascadeType.ALL, mappedBy = "competenze")
-	private List<CanditatoCompetenze> competenzeCandidato;
+	private List<CandidatoCompetenze> competenzeCandidato;
 	
 	@ManyToMany
 	@JoinTable(

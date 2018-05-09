@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Candidato;
-import com.example.demo.entities.CanditatoCompetenze;
+import com.example.demo.entities.CandidatoCompetenze;
 import com.example.demo.interfaces.CandidatoRepository;
 
 @Service
@@ -56,7 +56,7 @@ public class CandidatoService
 	}
 	
 	//aggiornamento competenze candidato
-	public void aggiornaCompetenzeCandidato(Candidato candidato, CanditatoCompetenze candidatoCompetenze)
+	public void aggiornaCompetenzeCandidato(Candidato candidato, CandidatoCompetenze candidatoCompetenze)
 	{
 		Candidato c = candidatoRepository.getOne(candidato.getIdCandidato());
 		c.getCandidatoCompetenze().add(candidatoCompetenze);

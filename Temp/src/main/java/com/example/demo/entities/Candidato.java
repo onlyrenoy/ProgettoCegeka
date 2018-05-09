@@ -30,7 +30,7 @@ public class Candidato {
 	private int eta;
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="candidati")
     @JsonIgnore
-	private List<CanditatoCompetenze> candidatoCompetenze = new ArrayList<CanditatoCompetenze>();
+	private List<CandidatoCompetenze> candidatoCompetenze = new ArrayList<CandidatoCompetenze>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "candidato")
 	@JsonIgnore
@@ -80,11 +80,11 @@ public class Candidato {
 		this.colloqui = colloqui;
 	}
 
-	public List<CanditatoCompetenze> getCandidatoCompetenze() {
+	public List<CandidatoCompetenze> getCandidatoCompetenze() {
 		return candidatoCompetenze;
 	}
 
-	public void setCandidatoCompetenze(List<CanditatoCompetenze> candidatoCompetenze) {
+	public void setCandidatoCompetenze(List<CandidatoCompetenze> candidatoCompetenze) {
 		this.candidatoCompetenze = candidatoCompetenze;
 	}
 
