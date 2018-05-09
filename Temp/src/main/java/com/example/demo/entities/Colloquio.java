@@ -27,12 +27,12 @@ public class Colloquio {
 	
 	private String statoColloquio;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Intervistatore intervistatore;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Candidato candidato;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Offerta offerta;
 	
 	public Colloquio() {

@@ -30,11 +30,8 @@ public class ColloquioController {
 	@GetMapping(path="/creaColloquio")
 	public @ResponseBody String creaColloquio() {
 		
-		Date data = new Date(2018, 5, 8);
-		Intervistatore intervistatore = new Intervistatore ();
-		Offerta offerta = new Offerta ();
-		Candidato candidato = new Candidato ();
-//		colloquioService.creaColloquio(data, "R&D", intervistatore, candidato, offerta);
+		Date data = new Date(118, 1, 23);
+		colloquioService.creaColloquio(data, "R&D", 3, 4, 2);
 		
 		return "colloquio salvato ";
 		
@@ -44,7 +41,7 @@ public class ColloquioController {
 	@GetMapping(path="/findByCandidato")
 	public @ResponseBody List<Colloquio> findByNomeCandidato(){
 		
-		List<Colloquio> c = colloquioService.findColloquioNomeCandidato("eddi");
+		List<Colloquio> c = colloquioService.findColloquioNomeCandidato("emanuel");
 		return c;
 	}
 	
@@ -61,6 +58,14 @@ public class ColloquioController {
 		return c;
 	}
 	
+	@GetMapping(path="/removeColloquioId")
+	public @ResponseBody String rimuoviColloquioId(){
+		
+	
+		colloquioService.removeById(1);
+		return "rimosso con successo";
+		
+	}
 	
 	
 
