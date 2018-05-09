@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entities.Candidato;
 
 @Repository
-public interface CandidatoRepository extends JpaRepository<Candidato, Long>
+public interface CandidatoRepository extends JpaRepository<Candidato, Integer>
 {
 	public List<Candidato> findByNome(String nome);
 	

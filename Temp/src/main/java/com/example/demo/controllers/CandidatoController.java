@@ -32,4 +32,11 @@ public class CandidatoController
 		return c;
 	}
 	
+	//rimozione di un candidato dal database
+	@GetMapping(path="/rimuoviCandidato")
+	public void rimuoviCandidato()
+	{
+		candidatoService.rimuoviCandidato(2);
+	}
+	
 }

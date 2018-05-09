@@ -40,15 +40,18 @@ public class CandidatoService
 	}
 	
 	//rimozione candidato tramite id
-	public void rimuoviCandidato(long id)
+	public void rimuoviCandidato(int id)
 	{
+		if(candidatoRepository.findById(id) != null)
+		{
 		this.candidatoRepository.deleteById(id);
+		}
 	}
 	
 	//aggiornamento competenze candidato
 	public void aggiornaCompetenzeCandidato(Candidato candidato, CanditatoCompetenze candidatoCompetenze)
 	{
-		Candidato c = candidatoRepository.getOne((long) candidato.getIdCandidato());
+		Candidato c = candidatoRepository.getOne(candidato.getIdCandidato());
 		c.getCandidatoCompetenze().add(candidatoCompetenze);
 		
 		this.candidatoRepository.save(c);
