@@ -60,10 +60,34 @@ public class ColloquioController {
 	
 	@GetMapping(path="/removeColloquioId")
 	public @ResponseBody String rimuoviColloquioId(){
-		
-	
 		colloquioService.removeById(1);
-		return "rimosso con successo";
+		return "rimosso con successo";		
+	}
+	
+	@GetMapping(path="/removeColloquiNomeCandidato")
+	public @ResponseBody String rimuoviColloquiNomeCandidato() {
+		colloquioService.removeByNomeCandidato("eddi");
+		return "rimossi con successo";
+	}
+	
+	@GetMapping(path="/aggiornaFeedbackStato")
+	public @ResponseBody String aggiornaFeedbackStato(){
+		colloquioService.aggiornaFeedbackStato("aggiornato feedback", "aggiornato stato", 2);
+		return "aggiornato con successo";
+		
+	}
+	
+	@GetMapping(path="/aggiornaFeedback")
+	public @ResponseBody String aggiornaFeedback(){
+		colloquioService.aggiornaFeedback("aggiornato feedback2", 2);
+		return "aggiornato con successo";
+		
+	}
+	
+	@GetMapping(path="/aggiornaStato")
+	public @ResponseBody String aggiornaStato(){
+		colloquioService.aggiornaStato("aggiornato stato2", 2);
+		return "aggiornato con successo";
 		
 	}
 	
