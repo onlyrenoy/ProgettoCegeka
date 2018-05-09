@@ -72,6 +72,31 @@ public class ColloquioService {
 		}
 	}
 	
+	public void removeByNomeCandidato(String nome) {
+		List<Colloquio> colloqui = colloquioRepository.findByCandidatoNome(nome);
+		if(colloqui != null) {
+			colloquioRepository.deleteInBatch(colloqui);
+		}
+	}
+	
+	public void aggiornaFeedbackStato(String feedback,String stato,int id) {
+		Optional<Colloquio> colloquio = colloquioRepository.findById(id);
+		colloquio.get().setFeedback(feedback);
+		colloquio.get().setStatoColloquio(stato);
+		colloquioRepository.save(colloquio.get());
+	}
+	
+	public void aggiornaFeedback(String feedback,int id) {
+		Optional<Colloquio> colloquio = colloquioRepository.findById(id);
+		colloquio.get().setFeedback(feedback);
+		colloquioRepository.save(colloquio.get());
+	}
+	
+	public void aggiornaStato(String stato,int id) {
+		Optional<Colloquio> colloquio = colloquioRepository.findById(id);
+		colloquio.get().setStatoColloquio(stato);
+		colloquioRepository.save(colloquio.get());
+	}
 	
 
 }
