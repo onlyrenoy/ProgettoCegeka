@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -14,38 +14,18 @@ import com.example.demo.entities.Candidato;
 import com.example.demo.entities.Colloquio;
 import com.example.demo.entities.Intervistatore;
 import com.example.demo.entities.Offerta;
-import com.example.demo.service.CandidatoService;
+import com.example.demo.services.CandidatoService;
 import com.example.demo.services.ColloquioService;
 
 @Controller
 @RequestMapping(path="/go")
-public class MyController {
+public class ColloquioController {
 	
 	@Autowired
 	private CandidatoService candService;
 	
 	@Autowired
 	private ColloquioService colloquioService ;
-	
-	@GetMapping(path="/home")
-	public  @ResponseBody  String go()
-	{
-		return "hello";
-	}
-	
-	@GetMapping(path="/salva")
-	public @ResponseBody String salva()
-	{
-		Candidato c = new Candidato();
-		c.setCognome("biba");
-		c.setEta(23);
-		c.setNome("eddi");
-		
-		candService.save(c);	
-		
-		return "dati salvati";
-	}
-	
 	
 	@GetMapping(path="/creaColloquio")
 	public @ResponseBody String creaColloquio() {
