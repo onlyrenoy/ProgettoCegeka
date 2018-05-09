@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entities.Colloquio;
-import com.example.demo.entities.Intervistatore;
 
 public interface ColloquioRepository extends JpaRepository<Colloquio,Integer> {
 
