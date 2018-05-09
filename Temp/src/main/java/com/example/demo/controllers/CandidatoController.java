@@ -33,10 +33,18 @@ public class CandidatoController
 	}
 	
 	//rimozione di un candidato dal database
-	@GetMapping(path="/rimuoviCandidato")
-	public void rimuoviCandidato()
+	@GetMapping(path="/rimuovicandidato")
+	public @ResponseBody String rimuoviCandidato()
 	{
-		candidatoService.rimuoviCandidato(2);
+		 return candidatoService.rimuoviCandidato(10);
+		
+	}
+	
+	@GetMapping(path="candidatiPerNome")
+	public @ResponseBody List<Candidato> listaPerNome()
+	{
+		List<Candidato> c = candidatoService.findByName("cara");
+		return c;
 	}
 	
 }

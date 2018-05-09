@@ -40,12 +40,19 @@ public class CandidatoService
 	}
 	
 	//rimozione candidato tramite id
-	public void rimuoviCandidato(int id)
+	public String rimuoviCandidato(int id)
 	{
+		String stato;
 		if(candidatoRepository.findById(id) != null)
 		{
 		this.candidatoRepository.deleteById(id);
+		stato="utente cancellato!";
 		}
+		else 
+		{
+			stato = "utente non esiste";
+		}
+		return stato;
 	}
 	
 	//aggiornamento competenze candidato
