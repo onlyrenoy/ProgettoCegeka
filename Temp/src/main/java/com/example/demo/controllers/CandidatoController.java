@@ -40,10 +40,17 @@ public class CandidatoController
 		
 	}
 	
-	@GetMapping(path="candidatiPerNome")
+	@GetMapping(path="/candidatiPerNome")
 	public @ResponseBody List<Candidato> listaPerNome()
 	{
 		List<Candidato> c = candidatoService.findByName("cara");
+		return c;
+	}
+	
+	@RequestMapping(path="/candidatoPerCognome")
+	public @ResponseBody List<Candidato> listaPerCognome()
+	{
+		List<Candidato> c = candidatoService.findBySurname("ciao");
 		return c;
 	}
 	
