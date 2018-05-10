@@ -3,6 +3,7 @@ package com.example.demo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Candidato;
@@ -15,9 +16,9 @@ public class CandidatoService
 	private CandidatoRepository candidatoRepository;
 	
 	// creazione di un candidato passando un oggetto candidato
-	public void creaCandidato(Candidato candidato)
+	public Candidato creaCandidato(Candidato candidato)
 	{
-		this.candidatoRepository.save(candidato);
+		return this.candidatoRepository.save(candidato);
 	}
 	
 	//creazione di un candidato passando gli argomenti da modificare
@@ -75,7 +76,10 @@ public class CandidatoService
 		return this.candidatoRepository.findBySkill(competenza);
 	}
 	
-	
+	public List<Candidato> findByNameContaining(String nome)
+	{
+		return this.candidatoRepository.findByNomeContainingOrderByNomeAsc(nome);
+	}
 	
 	
 }
