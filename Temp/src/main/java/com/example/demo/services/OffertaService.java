@@ -51,5 +51,13 @@ public class OffertaService {
 	}
 	
 	
+	public Offerta salvaOfferta(Offerta offerta) {
+		return offertaRepository.save(offerta);
+	}
+
+	public List<Offerta> offertaPerStato(String stato){
+		return offertaRepository.findByStatoOfferta(stato);
+	}
+	
 
 }
