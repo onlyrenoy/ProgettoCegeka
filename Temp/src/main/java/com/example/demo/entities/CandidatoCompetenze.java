@@ -26,11 +26,11 @@ public class CandidatoCompetenze {
 	@Column(name="livello_effettivo")
 	private int livelloEffettivo;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "candidato_id")
 	private Candidato candidati;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "competenze_id")
 	private Competenze competenze;
 

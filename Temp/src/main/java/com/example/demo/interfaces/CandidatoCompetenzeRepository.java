@@ -6,5 +6,6 @@ import com.example.demo.entities.CandidatoCompetenze;
 
 public interface CandidatoCompetenzeRepository extends JpaRepository<CandidatoCompetenze, Integer>
 {
+
 	
 }

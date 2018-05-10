@@ -18,6 +18,11 @@ public interface CandidatoRepository extends JpaRepository<Candidato, Integer>
 	
 	@Query("select c" + 
 			" from Candidato c, CandidatoCompetenze cc, Competenze co" + 
-			" where co.nome =:competenze and c.idCandidato = cc.candidati.idCandidato")
-	public List<Candidato> findBySkill(@Param("competenze") String competenze);
+			" where co.nome =:competenza and c.idCandidato = cc.candidati.idCandidato"
+			+ " and cc.competenze.idCompetenze = co.idCompetenze")
+	public List<Candidato> findBySkill(@Param("competenza") String competenze);
+	
+	public List<Candidato> findByNomeContainingOrderByNomeAsc(String nome);
+	
+	
 }

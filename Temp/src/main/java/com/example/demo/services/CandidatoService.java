@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Candidato;
-import com.example.demo.entities.CandidatoCompetenze;
 import com.example.demo.interfaces.CandidatoRepository;
 
 @Service
@@ -55,15 +54,7 @@ public class CandidatoService
 		return stato;
 	}
 	
-	//aggiornamento competenze candidato
-	public void aggiornaCompetenzeCandidato(Candidato candidato, CandidatoCompetenze candidatoCompetenze)
-	{
-		Candidato c = candidatoRepository.getOne(candidato.getIdCandidato());
-		c.getCandidatoCompetenze().add(candidatoCompetenze);
-		
-		this.candidatoRepository.save(c);
-		
-	}
+	
 	
 	// tutti i candidati tramite il nome
 	public List<Candidato> findByName(String name)
@@ -83,12 +74,6 @@ public class CandidatoService
 	{
 		return this.candidatoRepository.findBySkill(competenza);
 	}
-	
-	
-	
-	
-	
-
 	
 	
 	

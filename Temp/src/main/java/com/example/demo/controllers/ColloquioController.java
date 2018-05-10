@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.entities.Candidato;
+
 import com.example.demo.entities.Colloquio;
-import com.example.demo.entities.Intervistatore;
-import com.example.demo.entities.Offerta;
 import com.example.demo.services.CandidatoService;
 import com.example.demo.services.ColloquioService;
 
