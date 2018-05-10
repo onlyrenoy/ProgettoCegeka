@@ -33,19 +33,25 @@ public class ColloquioService {
 	
 	
 	// TO FIX
-	public void creaColloquio(Date data,String dipartimento,int id_intervistatore,int id_candidato,int id_offerta) {
+	public String creaColloquio(Date data,String dipartimento,int id_intervistatore,int id_candidato,int id_offerta) {
 		
 		Colloquio c = new Colloquio();
 		c.setDataOra(data);
 		Optional<Intervistatore> intervistatoreOpt = intervistatoreRepository.findById(id_intervistatore);
 		Optional<Offerta> offertaOpt = offertaRepository.findById(id_offerta);
 		Optional<Candidato> candidatoOpt = candidatoRepository.findById(id_candidato);
+		if(candidatoOpt.isPresent())
+		{
 		c.setIntervistatore(intervistatoreOpt.get());
 		c.setCandidato(candidatoOpt.get());
 		c.setOfferta(offertaOpt.get());
 		c.setDipartimento(dipartimento);
 		c.setStatoColloquio("PIANIFICATO");		
 		colloquioRepository.save(c);
+		}
+		else {
+			return " creazione impossibile";}
+		return "colloquio pianificato";
 	}
 	
 	public List<Colloquio> findColloquioNomeCandidato(String nome) {

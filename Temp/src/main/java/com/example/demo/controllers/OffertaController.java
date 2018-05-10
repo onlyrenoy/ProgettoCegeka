@@ -63,5 +63,15 @@ public class OffertaController {
 		return offertaService.offertaPerId(idOfferta);
 		
 	}
+	
+	@GetMapping(path="/match/{id}")
+	public List<CandidatoLivello> matchOfferta(@PathVariable("id") int idOfferta){
+		return offertaService.matchOfferta(idOfferta);
+	}
+	
+	@GetMapping(path="/matchN/{id}/{pageSize}")
+	public List<CandidatoLivello> matchOfferta(@PathVariable("id") int idOfferta,@PathVariable("pageSize") int pageSize){
+		return offertaService.topNMatch(idOfferta, pageSize);
+	}
 
 }

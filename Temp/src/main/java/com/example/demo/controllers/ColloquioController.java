@@ -29,9 +29,9 @@ public class ColloquioController {
 	public @ResponseBody String creaColloquio() {
 		
 		Date data = new Date(118, 1, 23);
-		colloquioService.creaColloquio(data, "R&D", 3, 4, 2);
+		return colloquioService.creaColloquio(data, "R&D", 3, 10, 2);
 		
-		return "colloquio salvato ";
+		
 		
 		
 	}

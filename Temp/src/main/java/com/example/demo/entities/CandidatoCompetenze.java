@@ -24,7 +24,7 @@ public class CandidatoCompetenze {
 	private int livelloDichiarato;
 	
 	@Column(name="livello_effettivo")
-	private int livelloEffettivo;
+	private Integer livelloEffettivo;
 	
 	@ManyToOne()
 	@JoinColumn(name = "candidato_id")

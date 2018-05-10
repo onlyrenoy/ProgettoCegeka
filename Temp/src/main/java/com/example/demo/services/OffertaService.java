@@ -25,6 +25,11 @@ public class OffertaService {
 	@Autowired
 	private CandidatoRepository candidatoRepository;
 	
+	public List<CandidatoLivello> topNMatch(int idOfferta, int nPagine){
+		List<CandidatoLivello> candidati = matchOfferta(idOfferta);
+		return candidati.subList(0, nPagine);
+	}
+	
 	public List<CandidatoLivello> matchOfferta(int idOfferta) {
 
 		Optional<Offerta> offerta = offertaRepository.findById(idOfferta);
