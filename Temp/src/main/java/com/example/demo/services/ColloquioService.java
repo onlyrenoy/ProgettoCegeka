@@ -37,14 +37,14 @@ public class ColloquioService {
 		
 		Colloquio c = new Colloquio();
 		c.setDataOra(data);
-		Optional<Intervistatore> intervistatore = intervistatoreRepository.findById(id_intervistatore);
-		Optional<Offerta> offerta = offertaRepository.findById(id_offerta);
-		Optional<Candidato> candidato = candidatoRepository.findById(id_candidato);
-		c.setIntervistatore(intervistatore.get());
-		c.setCandidato(candidato.get());
-		c.setOfferta(offerta.get());
+		Optional<Intervistatore> intervistatoreOpt = intervistatoreRepository.findById(id_intervistatore);
+		Optional<Offerta> offertaOpt = offertaRepository.findById(id_offerta);
+		Optional<Candidato> candidatoOpt = candidatoRepository.findById(id_candidato);
+		c.setIntervistatore(intervistatoreOpt.get());
+		c.setCandidato(candidatoOpt.get());
+		c.setOfferta(offertaOpt.get());
 		c.setDipartimento(dipartimento);
-		c.setStatoColloquio("PIANIFICATO");
+		c.setStatoColloquio("PIANIFICATO");		
 		colloquioRepository.save(c);
 	}
 	
@@ -96,6 +96,14 @@ public class ColloquioService {
 		Optional<Colloquio> colloquio = colloquioRepository.findById(id);
 		colloquio.get().setStatoColloquio(stato);
 		colloquioRepository.save(colloquio.get());
+	}
+	
+	public void cambiaIntervistatore(int idColloquio,int idIntervistatore) {
+		Optional<Colloquio> colloquio = colloquioRepository.findById(idColloquio);
+		Optional<Intervistatore> intervistatore = intervistatoreRepository.findById(idIntervistatore);
+		colloquio.get().setIntervistatore(intervistatore.get());
+		colloquioRepository.save(colloquio.get());
+
 	}
 	
 
