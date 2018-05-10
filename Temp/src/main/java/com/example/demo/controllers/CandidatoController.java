@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,14 +27,20 @@ public class CandidatoController
 	private CandidatoService candidatoService;
 	
 	
-	@PostMapping(path="/salva")
-	public @ResponseBody Candidato salva(@Param("nome") String nome, @Param("cognome") String cognome, @Param("eta") int eta )
+//	@PostMapping(path="/candidati")
+//	public @ResponseBody Candidato salva(@Param("nome") String nome, @Param("cognome") String cognome, @Param("eta") int eta )
+//	{
+//		Candidato c =  candidatoService.creaCandidato(nome, cognome, eta);
+//		return c;
+//	}
+	
+	@GetMapping(path="/candidati")
+	public @ResponseBody List<Candidato> tutti ()
 	{
-		Candidato c =  candidatoService.creaCandidato(nome, cognome, eta);
-		return c;
+		return candidatoService.findAll();
 	}
 	
-	@PostMapping(path="/salvaC")
+	@PostMapping(path="/candidati")
 	public ResponseEntity<Object> salva(@RequestBody Candidato candidato)
 	{
 		 
@@ -57,22 +64,22 @@ public class CandidatoController
 	
 	
 	//rimozione di un candidato dal database
-	@DeleteMapping(path="/rimuovicandidato")
-	public @ResponseBody String rimuoviCandidato(@Param("id") int id)
+	@DeleteMapping(path="/candidati/{id}")
+	public @ResponseBody String rimuoviCandidato(@PathVariable("id") int id)
 	{
 		 return candidatoService.rimuoviCandidato(id);
 		
 	}
 	
-	@GetMapping(path="/candidatiPerNome")
+	@GetMapping(path="/nome")
 	public @ResponseBody List<Candidato> listaPerNome(@Param("nome") String nome)
 	{
 		List<Candidato> c = candidatoService.findByName(nome);
 		return c;
 	}
 	
-	@GetMapping(path="/candidatiPerCognome")
-	public @ResponseBody List<Candidato> listaPerCognome(@Param("cognome") String cognome)
+	@GetMapping(path="/candidati/{cognome}")
+	public @ResponseBody List<Candidato> listaPerCognome(@PathVariable("cognome") String cognome)
 	{
 		List<Candidato> c = candidatoService.findBySurname(cognome);
 		return c;
