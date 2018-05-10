@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.example.demo.entities.Competenze;
 import com.example.demo.entities.Offerta;
 
 public interface OffertaRepository extends JpaRepository<Offerta,Integer>{
 	
 	public List<Offerta> findByStatoOfferta(String stato);
+	public Offerta findByIdOfferta(int id);
 
 }

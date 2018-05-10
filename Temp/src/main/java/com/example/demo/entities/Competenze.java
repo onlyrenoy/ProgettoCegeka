@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Competenze {
 	
@@ -25,6 +27,7 @@ public class Competenze {
 	private String nome;
 	
 	@OneToMany (cascade = CascadeType.ALL, mappedBy = "competenze")
+	@JsonIgnore
 	private List<CandidatoCompetenze> competenzeCandidato;
 	
 	@ManyToMany
@@ -35,6 +38,7 @@ public class Competenze {
 		inverseJoinColumns=
 		@JoinColumn(name="offerta_Id", nullable=false)
 	)
+	@JsonIgnore
 	private List<Offerta> offerte;
 	
 	

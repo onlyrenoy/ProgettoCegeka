@@ -59,5 +59,17 @@ public class OffertaService {
 		return offertaRepository.findByStatoOfferta(stato);
 	}
 	
+	public List<Competenze> listaCompetenze(int idOfferta){
+		
+		Optional<Offerta> offerta = offertaRepository.findById(idOfferta);
+		
+		return offerta.get().getCompetenze();
+		
+	}
+	
+	public Offerta offertaPerId(int id) {
+		return offertaRepository.findByIdOfferta(id);
+	}
+	
 
 }

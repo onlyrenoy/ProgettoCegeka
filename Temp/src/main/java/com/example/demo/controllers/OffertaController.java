@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.entities.CandidatoLivello;
+import com.example.demo.entities.Competenze;
 import com.example.demo.entities.Offerta;
 import com.example.demo.services.OffertaService;
 
@@ -49,6 +51,17 @@ public class OffertaController {
 	@GetMapping(path="/stato")
 	public List<Offerta> offertaPerStato(){
 		return offertaService.offertaPerStato("aperto");
+	}
+	
+	@GetMapping(path="/competenze")
+	public List<Competenze> competenzeOfferta(int idOfferta){
+		return offertaService.listaCompetenze(idOfferta);
+	}
+	
+	@GetMapping(path="/offerte/{id}")
+	public Offerta findById(@PathVariable("id") int idOfferta){
+		return offertaService.offertaPerId(idOfferta);
+		
 	}
 
 }
