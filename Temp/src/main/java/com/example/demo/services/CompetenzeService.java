@@ -15,6 +15,10 @@ public class CompetenzeService {
 	@Autowired
 	private CompetenzeRepository competenzeRepository;
 	
+	public List<Competenze> findAllCompetenze()
+	{
+		return competenzeRepository.findAll();
+	}
 	public void creaCompetenza(Competenze competenza)
 	{
 		this.competenzeRepository.save(competenza);

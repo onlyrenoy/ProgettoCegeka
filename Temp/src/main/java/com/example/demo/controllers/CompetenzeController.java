@@ -19,6 +19,12 @@ public class CompetenzeController {
 	@Autowired
 	private CompetenzeService competenzeService;
 	
+	@GetMapping(path="/tuttecompetenze")
+	public @ResponseBody List<Competenze> all()
+	{
+		return this.competenzeService.findAllCompetenze();
+	}
+	
 	@GetMapping(path="/creaCompetenza")
 	public @ResponseBody String creacompetenza() {
 		return competenzeService.creaCompetenze("info","CSS");	

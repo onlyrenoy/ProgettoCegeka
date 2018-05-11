@@ -68,7 +68,7 @@ $(function(){
 
 
 
-//Ritorna candidato in base al cognome
+//registra un candidato
 	$("#registra").submit(function(esito){
 	esito.preventDefault();
 	$("#registra").serialize();
