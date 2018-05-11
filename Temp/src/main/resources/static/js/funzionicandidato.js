@@ -65,24 +65,30 @@ $(function(){
 	    return false;
 	  });
 	});
+
+
+
 //Ritorna candidato in base al cognome
-$("#crea").click(function(){
+	$("#registra").submit(function(esito){
+	esito.preventDefault();
+	$("#registra").serialize();
 	var cnome = document.getElementById("nome").value;
 	var ccognome = document.getElementById("cognome").value;
 	var ceta = document.getElementById("eta").value;
 	var ccar = {nome:cnome, cognome:ccognome, eta:ceta};
 	var url = "candidato/candidati/";
-	console.log(nome);
-	console.log(cognome);
-	console.log(eta);
+	
+	console.log(JSON.stringify(ccar));
 	$.ajax({
 		url: url,
-		data:ccar,
+		contentType : "application/json",
+		method : "post",
+		data:JSON.stringify(ccar),
 		success: function(risultato){
 			
-				console.log("registrato!");
-				localstorage.setItem
+		console.log("registrato!");
+				
 			
 		}
 	});
-});
+	});

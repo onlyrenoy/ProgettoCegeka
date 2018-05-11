@@ -44,6 +44,7 @@ public class CandidatoController
 	public ResponseEntity<Object> salva(@RequestBody Candidato candidato)
 	{
 		 
+		System.out.println("Va in esecuzione...");
 		Candidato c = candidatoService.creaCandidato(candidato);
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()

@@ -2,17 +2,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" type ="text/css" href="css/stile.css">
+<title>Home-Candidati</title>
 </head>
 <body>
-<style>
-div#hide {
-  display: none;
-}
-div#compe {
-  display: none;
-}
-</style>
 
 	<div id="tuttiCandidati">
 
@@ -27,14 +20,18 @@ div#compe {
 	</div>
 	
 	<div id ="hide">
+	<form id="registra" action="candidato/candidati"  method="post">
 	<p>Nome:<input type="text" id="nome" name="nome"></p>
 	<p>Cognome:<input type="text" id="cognome" name="cognome"></p>
 	<p>Eta:<input type="text" id="eta" name="eta"></p>	
-	<button type="button" id="crea">Crea candidato</button>
+	<button type="submit" id="crea">Crea candidato</button>
+	
+	
 	<input type="button" id="mostraform" value="Competenza">
 	<div id="compe">
 	<input type="testo" id="scrivicompetenza" name="c">
 	</div>
+	</form>
 	</div>
 	
 	
