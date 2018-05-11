@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Candidato;
+import com.example.demo.entities.CandidatoCompetenze;
+import com.example.demo.entities.Competenze;
 import com.example.demo.interfaces.CandidatoRepository;
+import com.example.demo.interfaces.CompetenzeRepository;
 
 @Service
 public class CandidatoService 
@@ -15,9 +20,22 @@ public class CandidatoService
 	@Autowired
 	private CandidatoRepository candidatoRepository;
 	
+	@Autowired
+	private CompetenzeRepository competenzeRepository;
+	
 	// creazione di un candidato passando un oggetto candidato
 	public Candidato creaCandidato(Candidato candidato)
 	{
+		return this.candidatoRepository.save(candidato);
+	}
+	
+	// creazione di un candidato passando un oggetto candidato e una competenza
+	public Candidato creaCandidato(Candidato candidato,Competenze competenza)
+	{
+		CandidatoCompetenze c = new CandidatoCompetenze();
+		c.setCompetenze(competenza);
+		c.setLivelloDichiarato(4);
+		candidato.getCandidatoCompetenze().add(c);
 		return this.candidatoRepository.save(candidato);
 	}
 	

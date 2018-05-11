@@ -6,31 +6,66 @@
 <title>Home-Candidati</title>
 </head>
 <body>
-
+	<div id="header"><h1> Progetto Cegeka </h1></div>
 	<div id="tuttiCandidati">
 
 		<p>Ottieni la lista dei tuoi candidati</p>
 		<button type="button" id="listacandidati">clicca</button>
 
 	</div>
-	<button type="button" id="listapernome">clicca</button>
-	<input type="text" id="scrivinome" name="nome">
+	
+	
+	<!-- Div dove compare la lista dei candidati per nome  -->
 	<div id="candidatipernome">
 		<p>lista dei candidati per nome</p>
+		<button type="button" id="listapernome">scrivi il nome e clicca!</button>
+		<input type="text" id="scrivinome" name="nome">
+		
+		
+	</div>
+	
+	<!-- Div dove compare la lista dei candidati per cognome  -->
+	<div id="candidatipercognome">
+		<p>lista dei candidati per cognome</p>
+		<button type="button" id="listapercognome">scrivi il cognome e clicca!</button>
+		<input type="text" id="scrivicognome">
 	</div>
 	
 	<div id ="hide">
 	<form id="registra" action="candidato/candidati"  method="post">
-	<p>Nome:<input type="text" id="nome" name="nome"></p>
+	<p>Nome:<input type="text" id="nome"></p>
 	<p>Cognome:<input type="text" id="cognome" name="cognome"></p>
 	<p>Eta:<input type="text" id="eta" name="eta"></p>	
+	<br>
+	<input type="button" id="mostraform" value="Competenza">
+	<div id="compe">
+	<br>
+	<select id='ddlViewBy'>
+	</select>
+	<br>
+	<p>Livello:</p>
+	<select id='livello'>
+		<option value="uno">1</option>
+	 	<option value="due">2</option>
+	  	<option value="tre">3</option>
+	  	<option value="quattro">4</option>
+	  	<option value="cinque">5</option>
+	  	<option value="sei">6</option>
+	 	<option value="sette">7</option>
+	  	<option value="otto">8</option>
+	  	<option value="nove" >9</option>
+	  	<option value="dieci">10</option>
+
+	</select>
+	</div>
+	
+	
+	<br>
+	<br>
 	<button type="submit" id="crea">Crea candidato</button>
 	
 	
-	<input type="button" id="mostraform" value="Competenza">
-	<div id="compe">
 	
-	</div>
 	</form>
 	</div>
 	

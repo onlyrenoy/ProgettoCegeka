@@ -11,17 +11,35 @@ $("#listacandidati").click(function(){
 	});
 });
 
-// lista di tutti i candidati per nome
+//lista di tutti i candidati per cognome
 
 $("#listapernome").click(function(){
-	var cognome = document.getElementById("scrivinome").value;
+	var nomel = document.getElementById("scrivinome").value;
+	var url = "candidato/nome";
+	var n = {nome:nomel}
+	console.log(nome);
+	$.ajax({
+		url: url,
+		data:n,
+		success: function(risultato){
+			$.each(risultato,function(i,item){
+				document.getElementById("candidatipernome").innerHTML += "<br><tr> <td>" + item.idCandidato +"</td><td>" + item.nome + "</td> <td>" + item.cognome + "</td></tr><br>";
+			});
+		}
+	});
+});
+
+// lista di tutti i candidati per cognome
+
+$("#listapercognome").click(function(){
+	var cognome = document.getElementById("scrivicognome").value;
 	var url = "candidato/candidati/"+cognome;
 	console.log(cognome);
 	$.ajax({
 		url: url,
 		success: function(risultato){
 			$.each(risultato,function(i,item){
-				document.getElementById("candidatipernome").innerHTML += "<br><tr> <td>" + item.idCandidato +"</td><td>" + item.nome + "</td> <td>" + item.cognome + "</td></tr><br>";
+				document.getElementById("candidatipercognome").innerHTML += "<br><tr> <td>" + item.idCandidato +"</td><td>" + item.nome + "</td> <td>" + item.cognome + "</td></tr><br>";
 			});
 		}
 	});
@@ -75,15 +93,15 @@ $(function(){
 	var cnome = document.getElementById("nome").value;
 	var ccognome = document.getElementById("cognome").value;
 	var ceta = document.getElementById("eta").value;
-	var ccar = {nome:cnome, cognome:ccognome, eta:ceta};
+	var ccandidato = {nome:cnome, cognome:ccognome, eta:ceta};
 	var url = "candidato/candidati/";
 	
-	console.log(JSON.stringify(ccar));
+	console.log(JSON.stringify(ccandidato));
 	$.ajax({
 		url: url,
 		contentType : "application/json",
 		method : "post",
-		data:JSON.stringify(ccar),
+		data:JSON.stringify(ccandidato),
 		success: function(risultato){
 			
 		console.log("registrato!");

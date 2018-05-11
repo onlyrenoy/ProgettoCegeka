@@ -1,11 +1,3 @@
-#hide, #compe {
-  display: none;
-}
-
-.body{
-	background-color:#f6f9c2; 
-}
-
 html{
 	background-color: #E3F2FD;
 }
@@ -58,4 +50,26 @@ table{
 }
 tr{
 	text-align: center;
+}
+
+#tuttiCandidati{
+	    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+#candidatipernome{
+	    padding: 20px;
+    text-align: center;
+    background-color: #E3F2FD;
+}
+
+#candidatipercognome{
+	padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+#registra {
+	padding: 20px;
+    text-align: center;
+    background-color: #E3F2FD;
 }

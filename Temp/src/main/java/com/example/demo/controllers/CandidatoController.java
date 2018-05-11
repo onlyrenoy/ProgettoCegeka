@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.entities.Candidato;
+import com.example.demo.entities.Competenze;
 import com.example.demo.services.CandidatoService;
 
 @RestController
@@ -46,6 +47,20 @@ public class CandidatoController
 		 
 		System.out.println("Va in esecuzione...");
 		Candidato c = candidatoService.creaCandidato(candidato);
+		URI location = ServletUriComponentsBuilder
+				.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(c.getIdCandidato()).toUri();
+			
+			return ResponseEntity.created(location).build();
+	}
+	
+	@PostMapping(path="/candidatic")
+	public ResponseEntity<Object> salva(@RequestBody Candidato candidato,Competenze competenze)
+	{
+		 
+		System.out.println("Va in esecuzione...");
+		Candidato c = candidatoService.creaCandidato(candidato,competenze);
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
