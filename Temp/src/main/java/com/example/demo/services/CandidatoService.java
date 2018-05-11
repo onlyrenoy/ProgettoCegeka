@@ -80,6 +80,10 @@ public class CandidatoService
 	{
 		return this.candidatoRepository.findByNomeContainingOrderByNomeAsc(nome);
 	}
+
+	public List<Candidato> findAll() {
+		return  this.candidatoRepository.findAll();
+	}
 	
 	
 	
