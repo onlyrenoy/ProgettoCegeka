@@ -14,10 +14,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.entities.Colloquio;
 import com.example.demo.services.CandidatoService;
 import com.example.demo.services.ColloquioService;
+import com.example.demo.services.IntervistatoreService;
+import com.example.demo.services.OffertaService;
 
 @Controller
 @RequestMapping(path="/go")
 public class ColloquioController {
+	
+	@Autowired
+	private IntervistatoreService intervistatoreService;
+	
+	@Autowired
+	private OffertaService offertaService;
 	
 	@Autowired
 	private CandidatoService candService;
@@ -30,10 +38,15 @@ public class ColloquioController {
 		
 		Date data = new Date(118, 1, 23);
 		return colloquioService.creaColloquio(data, "R&D", 3, 10, 2);
+	}
+	
+	@GetMapping(path="/creaColloquioP")
+	public @ResponseBody String creaColloquioP(Date data,String dipartimento,int idIntervistatore,int idCandidato,int idOfferta) {
 		
-		
-		
-		
+		Colloquio colloquio = new Colloquio();
+		colloquio.setDataOra(data);
+		colloquio.setDipartimento(dipartimento);
+		return colloquioService.creaColloquio(data, dipartimento, idIntervistatore, idCandidato, 2);
 	}
 	
 	@GetMapping(path="/findByCandidato")
