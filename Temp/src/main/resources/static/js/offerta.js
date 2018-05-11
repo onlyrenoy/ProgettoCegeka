@@ -29,14 +29,15 @@ $(document).on('click','.linkDettaglio', function(evt){
 			
 			console.log(result);
 			
-		    $("#newDiv").append("<div class='newDiv'> <br><tr><td>" + result.ruolo + " " +"</td><td>" 
+		    $("#newDiv").append("<br><tr><td>" + result.ruolo + " " +"</td><td>" 
 		    		+ result.statoOfferta + " "+ "</td><td>" + result.dipartimento + " " + "</td><td>" )  
 			
 			$.each(result.competenze,function(i,item){ 
 				$("#newDiv").append("<tr><td>" + item.categoria + " " + item.nome +  "</td></tr> " ) 
 				});
+		   
 		    $("#newDiv").append("<p>inserisci il numero di candidati desiderati:</p><input id='nPag' type='number' >" +
-					"</input><a class='linkMatch' href='offerta/matchN/"+result.idOfferta+"'>Clicca per eseguire il matching</a> <br></div>")
+					"</input><a class='linkMatch' href='offerta/matchN/"+result.idOfferta+"'>Clicca per eseguire il matching</a> <br>")
 		}
 	 
 		});
@@ -56,8 +57,14 @@ $(document).on('click','.linkMatch', function(evt){
 			
 			 
 			console.log(result);
-			$.each(result,function(i,item){ 
-				 $("#matchDiv").append("<tr><td>" + item.candidato.nome + " " + item.candidato.cognome + " " + item.candidato.eta + " livello: "+ item.contatore +"</td></tr>")
+			$("#matchDiv").append("<table id='tabCandidato' style='width:40%'></table>");
+			$("#tabCandidato").append("<tr id='titolo'><th>Nome</th><th>Cognome</th><th>Eta</th><th>Livello</th><th>Organizza Colloquio</th></tr>");
+			
+			 $.each(result,function(i,item){ 
+				console.log(i);
+				 $("#tabCandidato").append("<tr id='id"+i+"'><td>" 
+						 + item.candidato.nome + "</td> <td> " + item.candidato.cognome + "</td> <td>" + item.candidato.eta 
+						 + "</td><td>"+ item.contatore +"</td><td><a class='linkOrganizza' id='"+i+"' href='inter/allIntervistatori'>organizza un colloquio</a></td></tr>");
 				
 			});
 		}
@@ -66,3 +73,26 @@ $(document).on('click','.linkMatch', function(evt){
 	
 });
 
+$(document).on('click','.linkOrganizza', function(evt){
+	$(".intervistatore").empty();
+	evt.preventDefault();
+    var href = this.href;
+    var idRiga = this.id;
+    console.log(href);
+    console.log(idRiga);
+	$.ajax({
+		url: href,
+		success: function(result){
+			$("#titolo").append("<th class='intervistatore'>Intervistatore</th>");
+			 $("#id"+idRiga+"").append("<tr class='intervistatore'><td><select class='selectIntervistatori'></select></td></tr>")
+//			 $("#titolo").append("<tr class='intervistatore'><th>Data</th></tr>");
+//			 $("#id"+idRiga+"").append("<tr class='intervistatore'><td><a href=''>prenota colloquio</a></td></tr>")
+			console.log(result);
+			$.each(result,function(i,item){ 
+				 $(".selectIntervistatori").append("<option value='"+item.idIntervistatore+"'>"+item.nome+"</option>")
+			});
+		}
+	 
+		});
+	
+});

@@ -1,6 +1,8 @@
 package com.example.demo.services;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,10 @@ public class IntervistatoreService {
 		intervistatore.setDipartimento(dipartimento);
 		intervistatore.setPosizioneNelDipartimento(posizioneDipartimento);
 		intervistatoreRepository.save(intervistatore);
+	}
+	
+	public List<Intervistatore> allIntervistatori(){
+		return intervistatoreRepository.findAll();
 	}
 
 }
